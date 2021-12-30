@@ -9,8 +9,26 @@ import Navbar from "./components/Navbar/Navbar";
 import Pagination from "./components/Pagination/Pagination";
 import Search from "./components/Search/Search";
 
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Episodes from "./Pages/Episodes";
+import Location from "./Pages/Location";
 
+function App() {
+    return(
+        <Router>
+            <div className="App">
+            <Navbar />
+            </div>
+
+            <Routes>
+                {/* Link Home/ Episodes and Location Route in the App */}
+                <Route path="/" element={<Home />} />
+                <Route path="/episodes" element={<Episodes />} />
+                <Route path="/location" element={<Location />} />
+            </Routes>
+        </Router>
+    );
+}
 
 const  Home = () => {
     // ~~~~~~ Data Fetching Section 
@@ -38,7 +56,6 @@ const  Home = () => {
 
     return (
         <div className="App">
-            <Navbar />
             <h1 className="text-center mb-3">Characters</h1>
 
             <Search setSearch={setSearch} setPageNumber={setPageNumber} />
