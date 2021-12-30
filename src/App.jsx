@@ -9,12 +9,14 @@ import Navbar from "./components/Navbar/Navbar";
 import Pagination from "./components/Pagination/Pagination";
 import Search from "./components/Search/Search";
 
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
-function App() {
+
+const  Home = () => {
     // ~~~~~~ Data Fetching Section 
     let [fetchedData, setFetchedData] = useState([]);
     let [pageNumber, setPageNumber]= useState(1);
-    let[search, setSearch] = useState("");
+    let [search, setSearch] = useState("");
     let [status, setStatus] = useState("");
     let [gender, setGender] = useState("");
     let [species, setSpecies] = useState("");
@@ -36,7 +38,7 @@ function App() {
 
     return (
         <div className="App">
-            <h1 className="text-center ubuntu my-4">Rick & Morty <span style={{color: "#7aafec"}}>WiKi</span> </h1>
+            <Navbar />
             <h1 className="text-center mb-3">Characters</h1>
 
             <Search setSearch={setSearch} setPageNumber={setPageNumber} />
