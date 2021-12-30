@@ -23,8 +23,8 @@ function App() {
             <Routes>
                 {/* Link Home/ Episodes and Location Route in the App */}
                 <Route path="/" element={<Home />} />
-                <Route path="/episodes" element={<Episodes />} />
-                <Route path="/location" element={<Location />} />
+                <Route path="/episodes" element={<Episodes/>} />
+                <Route path="/location" element={<Location/>} />
             </Routes>
         </Router>
     );
