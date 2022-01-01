@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from "react";
+import Card from "../components/Card/Card";
 
 const Episodes = () => {
     let [id, setID] = useState(1);
     let [info, setInfo] = useState([]);
+    let [results, setResults] = useState([]);
     // Destructuring the info we get from episodes end for episodes route
     let {air_date, name} = info;
     let api = `https://rickandmortyapi.com/api/episode/${id}`;
@@ -11,13 +13,24 @@ const Episodes = () => {
         (async function() {
             let data = await fetch(api).then((res)=>{return res.json()});
             setInfo(data);
+
+            let episodeCharacters = await Promise.all(
+                data.characters.map( (charLink)=>{
+                    return (
+                        fetch(charLink).then((res) => {
+                            return res.json();
+                        })
+                    );
+                })
+            );
+            setResults(episodeCharacters);
         })();
 
     }, [api]);
 
     return (
         <div className = "container">
-        <div className = "row">
+        <div className = "row mb-4">
             {/* If data received from api is empty it will be replaced with Unknown */}
             <h1 className="text-center mb-4">Episode : {" "}
             <span className="text-primary">
@@ -26,7 +39,14 @@ const Episodes = () => {
             </h1>
             <h5 className="text-center">Air Date {air_date === "" ? "Unknown" : air_date}</h5>
         </div>
-        <div className = "row"></div>   
+        <div className = "row">
+            <div className="col-3">Pick episodes</div>
+            <div className="col-8">
+                <div className="row">
+                    <Card results={results} />
+                </div>
+            </div>
+        </div>   
         </div>
     );
 }
