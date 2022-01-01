@@ -18,8 +18,13 @@ const Episodes = () => {
     return (
         <div className = "container">
         <div className = "row">
-            <h1 className="text-center mb-3">Episode: {name}</h1>
-            <h5 className="text-center">Air Date {air_date}</h5>
+            {/* If data received from api is empty it will be replaced with Unknown */}
+            <h1 className="text-center mb-4">Episode : {" "}
+            <span className="text-primary">
+            {name === "" ? "Unknown" : name}
+            </span>
+            </h1>
+            <h5 className="text-center">Air Date {air_date === "" ? "Unknown" : air_date}</h5>
         </div>
         <div className = "row"></div>   
         </div>
