@@ -30,8 +30,8 @@ const Navbar = () => {
                             }
                         `}
                     </style>
-                    <i class="fas fa-bars open fw-bold fs-4 text-dark"></i>
-                    <i class="fas fa-times close fw-bold fs-4 text-dark"></i>
+                    <i className="fas fa-bars open fw-bold fs-4 text-dark"></i>
+                    <i className="fas fa-times close fw-bold fs-4 text-dark"></i>
                 </button>
                 <div
                     className="collapse navbar-collapse justify-content-end"
