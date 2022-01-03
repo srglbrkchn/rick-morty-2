@@ -14,7 +14,7 @@ const Location = () => {
     let count = LocationCount();
 
     // Destructuring the info we get from episodes end for episodes route
-    let {air_date, name} = info;
+    let {name, type, dimension} = info;
     let api = `https://rickandmortyapi.com/api/location/${id}`;
 
     useEffect(() => {
@@ -24,12 +24,12 @@ const Location = () => {
             });
             setInfo(data);
 
-            let episodeCharacters = await Promise.all(data.residents.map((charLink) => {
-                return (fetch(charLink).then((res) => {
+            let locations = await Promise.all(data.residents.map((location) => {
+                return (fetch(location).then((res) => {
                     return res.json();
                 }));
             }));
-            setResults(episodeCharacters);
+            setResults(locations);
         })();
 
     }, [api]);
@@ -38,23 +38,36 @@ const Location = () => {
         <div className="container">
             <div className="row mb-4">
                 {/* If data received from api is empty it will be replaced with Unknown */}
-                <h1 className="text-center mb-4">Episode : {" "}
+                <h1 className="text-center mb-4">Location : {" "}
                     <span className="text-primary">
                         {name === ""
                             ? "Unknown"
                             : name}
                     </span>
                 </h1>
-                <h5 className="text-center">Air Date {air_date === ""
+                <h5
+                    style={{
+                    textTransform: "capitalize"
+                }}
+                    className="text-center">Dimension: {dimension === ""
                         ? "Unknown"
-                        : air_date}</h5>
+                        : dimension}</h5>
+
+                <h6
+                    style={{
+                    textTransform: "capitalize"
+                }}
+                    className="text-center">Type: {type === ""
+                        ? "Unknown"
+                        : type}</h6>
             </div>
+
             <div className="row">
                 <div className="col-3">
                     <h4 className="text-center mb-4">
-                        Pick episodes
+                        Pick location
                     </h4>
-                    <InputGroup name="Episode" setID={setID} total={count}/>
+                    <InputGroup name="Location" setID={setID} total={count}/>
                 </div>
                 <div className="col-8">
                     <div className="row">
