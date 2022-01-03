@@ -54,7 +54,7 @@ const Episodes = () => {
                     <h4 className="text-center mb-4">
                         Pick episodes
                     </h4>
-                    <InputGroup total={count}/>
+                    <InputGroup name="Episode" setID={setID} total={count}/>
                 </div>
                 <div className="col-8">
                     <div className="row">
