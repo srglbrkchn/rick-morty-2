@@ -58,7 +58,7 @@ const Episodes = () => {
                 </div>
                 <div className="col-8">
                     <div className="row">
-                        <Card results={results}/>
+                        <Card page="/episodes/" results={results}/>
                     </div>
                 </div>
             </div>

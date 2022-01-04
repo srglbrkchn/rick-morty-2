@@ -12,6 +12,7 @@ import Search from "./components/Search/Search";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Episodes from "./Pages/Episodes";
 import Location from "./Pages/Location";
+import CardDetails from "./components/Card/CardDetails";
 
 function App() {
     return(
@@ -25,6 +26,12 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/episodes" element={<Episodes/>} />
                 <Route path="/location" element={<Location/>} />
+
+                {/* Define Card details Routes in Home Episodes and Location */}
+                <Route path="/:id" element={<CardDetails />} />
+                <Route path="/episodes/:id" element={<CardDetails />} />
+                <Route path="/location/:id" element={<CardDetails />} />
+
             </Routes>
         </Router>
     );
@@ -65,7 +72,7 @@ const  Home = () => {
                         <Filter setStatus={setStatus} setGender={setGender} setSpecies={setSpecies} setPageNumber={setPageNumber} />
                     <div className="col-lg-8 col-12">
                         <div className="row">
-                            <Card results={results} />
+                            <Card page="/" results={results} />
                         </div>
                     </div>
                 </div>
