@@ -52,14 +52,19 @@ const CardDetails = () => {
                         <span className="fw-bold">Gender : </span> {gender}
                     </div>
                     <div className="">
-                        <span className="fw-bold">Location : </span> {location.name}
-                    </div>
-                    <div className="">
-                        <span className="fw-bold">Origin : </span> {origin.name}
-                    </div>
-                    <div className="">
                         <span className="fw-bold">Species : </span> {species}
                     </div>
+                    <div className="">
+                        <span className="fw-bold">Type : </span> {type==="" ? "Unknown" : type}
+                    </div>
+                    <div className="">
+                        {/* Important, put ? before .name, so it would get the property when object is loaded and code won't break */}
+                        <span className="fw-bold">Location : </span> {location?.name}
+                    </div>
+                    <div className="">
+                        <span className="fw-bold">Origin : </span> {origin?.name}
+                    </div>
+                    
                 </div>
             </div>
         </div>
