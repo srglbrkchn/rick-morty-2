@@ -19,23 +19,39 @@ const Pagination = ({info, pageNumber, setPageNumber}) => {
     }, []);
 
     return (
-        // Check if the info is fetched from the API before add pages to the component, to avoid code breaks.
+        <>
+        <style jsx>
+            {`
+                @media(max-width: 768px) {
+                    .next, .previous {
+                        display: none;
+                    }
 
+                    .pagination {
+                        font-size: 11px;
+                    }
+                }
+            `}
+        </style>
         <ReactPaginate
             className= "pagination justify-content-center gap-2 my-4"
             forcePage={pageNumber === 1 ? 0 : pageNumber - 1}
             nextLabel="Next"
             previousLabel="Previous"
-            nextClassName="btn btn-primary"
-            previousClassName="btn btn-primary"
+            nextClassName="btn btn-primary next"
+            previousClassName="btn btn-primary previous"
             pageClassName="page-item"
             pageLinkClassName="page-link"
             activeClassName="active"
+            marginPagesDisplayed={width < 576 ? 1 : 2}
+            pageRangeDisplayed={width < 576 ? 1 : 2}
             onPageChange={(data)=> {
                 setPageNumber(data.selected + 1);
             }}
+            // Check if the info is fetched from the API before add pages to the component, to avoid code breaks.
             pageCount={info?.pages} 
         />
+        </>
     );
 }
 
