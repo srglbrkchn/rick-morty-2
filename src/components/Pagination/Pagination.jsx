@@ -1,7 +1,22 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import ReactPaginate from "react-paginate";
 
 const Pagination = ({info, pageNumber, setPageNumber}) => {
+    // Capturing inner width of our browser
+    let [width, setWidth] = useState(window.innerWidth);
+    console.log(width);
+
+    function updateDimention () {
+        setWidth(window.innerWidth);
+    }
+    // Capture change in the browser size
+    useEffect(() => {
+        // Add event listener
+        window.addEventListener("resize", updateDimention);
+        return (() => {
+            window.removeEventListener("resize", updateDimention);
+        });
+    }, []);
 
     return (
         // Check if the info is fetched from the API before add pages to the component, to avoid code breaks.

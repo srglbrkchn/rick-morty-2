@@ -8,7 +8,7 @@ const Search = ({setSearch, setPageNumber}) => {
             onSubmit={(event) => {
             event.preventDefault();
         }}
-            className="d-flex justify-content-center gap-4 mb-5">
+            className="d-flex justify-content-center gap-4 mb-5 flex-sm-row flex-column align-items-center">
             <input
                 onChange={(event) => {
                 setSearch(event.target.value);
